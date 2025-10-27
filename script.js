@@ -1,145 +1,148 @@
 :root {
-  --bg: #f9f7fb;
-  --text: #2e2e2e;
-  --card: rgba(255, 255, 255, 0.9);
-  --accent: #c7a4ff;
-}
-
-body.dark {
-  --bg: #1a1a1a;
-  --text: #f0f0f0;
-  --card: rgba(40, 40, 40, 0.9);
-  --accent: #d9a8ff;
+  --bg-light: #fdf6f9;
+  --bg-dark: #1c1c1c;
+  --text-light: #222;
+  --text-dark: #f5f5f5;
+  --accent: #e6a5c2;
+  --card-light: #fff;
+  --card-dark: #2a2a2a;
+  --button-bg: #e6a5c2;
+  --button-hover: #d27da8;
 }
 
 body {
-  margin: 0;
   font-family: "Poppins", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--bg-light);
+  color: var(--text-light);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  text-align: center;
   width: 90%;
-  max-width: 420px;
+  max-width: 400px;
+  text-align: center;
 }
 
 h1 {
-  margin-bottom: 1rem;
-  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .card {
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-light);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-label {
+.card label {
   display: block;
-  margin-top: 15px;
-  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: 500;
 }
 
-input {
+.card input {
   width: 100%;
-  padding: 10px;
-  border: 2px solid var(--accent);
-  border-radius: 10px;
-  margin-top: 5px;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   outline: none;
-  background: transparent;
-  color: var(--text);
+  font-size: 1rem;
 }
 
 button {
-  background: var(--accent);
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--button-bg);
   color: #fff;
   border: none;
-  border-radius: 10px;
-  padding: 12px 20px;
-  margin-top: 20px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.2s ease, background 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  transform: scale(1.05);
-  background: #b480ff;
+  background-color: var(--button-hover);
 }
 
 #result {
-  margin-top: 20px;
+  margin-top: 1rem;
   font-size: 1.1rem;
-  line-height: 1.6;
+  font-weight: 600;
 }
 
 footer {
-  margin-top: 25px;
+  margin-top: 1rem;
   font-size: 0.9rem;
 }
 
 footer a {
   color: var(--accent);
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
-  margin-left: 5px;
 }
 
 footer a:hover {
   text-decoration: underline;
 }
 
-/* Dark/Light Toggle Switch */
+/* 🌙 Dark mode */
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.dark-mode .card {
+  background-color: var(--card-dark);
+}
+
 .theme-toggle {
   position: absolute;
   top: 20px;
   right: 20px;
 }
 
-#switch {
-  height: 0;
+.theme-toggle input {
   width: 0;
+  height: 0;
   visibility: hidden;
 }
 
-label {
-  cursor: pointer;
+.theme-toggle label {
+  display: block;
   width: 50px;
   height: 26px;
-  background: var(--accent);
-  display: block;
-  border-radius: 100px;
+  background-color: #ccc;
+  border-radius: 50px;
   position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-label:after {
+.theme-toggle label::after {
   content: "";
   position: absolute;
   top: 3px;
   left: 3px;
   width: 20px;
   height: 20px;
-  background: #fff;
-  border-radius: 90px;
+  background-color: white;
+  border-radius: 50%;
   transition: 0.3s;
 }
 
-#switch:checked + label {
-  background: #666;
+.theme-toggle input:checked + label {
+  background-color: var(--accent);
 }
 
-#switch:checked + label:after {
+.theme-toggle input:checked + label::after {
   left: calc(100% - 3px);
   transform: translateX(-100%);
 }
