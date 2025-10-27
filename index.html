@@ -7,32 +7,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="theme-toggle">
+    <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+  </div>
+
   <div class="container">
     <h1>Etsy Profit Calculator</h1>
-
-    <div class="input-group">
+    <div class="card">
       <label>Selling Price ($)</label>
-      <input type="number" id="sellingPrice" placeholder="Enter selling price" />
-    </div>
+      <input type="number" id="price" placeholder="Enter selling price" />
 
-    <div class="input-group">
       <label>Material Cost ($)</label>
-      <input type="number" id="materialCost" placeholder="Enter material cost" />
-    </div>
+      <input type="number" id="material" placeholder="Enter material cost" />
 
-    <div class="input-group">
       <label>Shipping Cost ($)</label>
-      <input type="number" id="shippingCost" placeholder="Enter shipping cost" />
+      <input type="number" id="shipping" placeholder="Enter shipping cost" />
+
+      <button onclick="calculateProfit()">Calculate My Profit</button>
+
+      <div id="result"></div>
     </div>
 
-    <button onclick="calculateProfit()">Calculate My Profit</button>
-
-    <div id="result"></div>
-
-    <p class="cta">
+    <footer>
       Want more Etsy sales? 
-      <a href="https://bit.ly/Multiple_Task" target="_blank">Get SEO help from Abdul — click here!</a>
-    </p>
+      <a href="https://bit.ly/Multiple_Task" target="_blank">Get SEO help from Abdul — Click Here</a>
+    </footer>
   </div>
 
   <script src="script.js"></script>
