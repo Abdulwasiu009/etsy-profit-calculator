@@ -1,28 +1,23 @@
 function calculateProfit() {
-  const price = parseFloat(document.getElementById("price").value);
-  const material = parseFloat(document.getElementById("material").value);
-  const shipping = parseFloat(document.getElementById("shipping").value);
-
-  if (isNaN(price) || isNaN(material) || isNaN(shipping)) {
-    document.getElementById("result").innerHTML =
-      "Please enter valid numbers in all fields.";
-    return;
-  }
+  const price = parseFloat(document.getElementById("price").value) || 0;
+  const material = parseFloat(document.getElementById("material").value) || 0;
+  const shipping = parseFloat(document.getElementById("shipping").value) || 0;
 
   const etsyFee = price * 0.065;
   const totalCost = material + shipping + etsyFee;
   const profit = price - totalCost;
-  const profitPercent = (profit / price) * 100;
+  const profitPercent = ((profit / price) * 100).toFixed(2);
 
-  document.getElementById("result").innerHTML = `
-    <p>Etsy fee (6.5%): <strong>$${etsyFee.toFixed(2)}</strong></p>
-    <p>Total cost (Material + Shipping + Fee): <strong>$${totalCost.toFixed(2)}</strong></p>
-    <p>Your Profit: <strong>$${profit.toFixed(2)} (${profitPercent.toFixed(1)}%)</strong></p>
+  let result = document.getElementById("result");
+  result.innerHTML = `
+    <p>Etsy Fee (6.5%): $${etsyFee.toFixed(2)}</p>
+    <p>Total Cost: $${totalCost.toFixed(2)}</p>
+    <p><strong>Profit: $${profit.toFixed(2)} (${profitPercent}%)</strong></p>
   `;
 }
 
-// Theme Toggle
-const switchInput = document.getElementById("switch");
-switchInput.addEventListener("change", () => {
-  document.body.classList.toggle("dark");
+// 🌙 Light/Dark mode toggle
+const toggleSwitch = document.getElementById("switch");
+toggleSwitch.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
 });
